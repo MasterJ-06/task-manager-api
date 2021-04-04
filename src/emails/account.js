@@ -10,7 +10,7 @@ const sendWelcomeEmail = (email, name) => {
         text: `Welcome to the app, ${name}.`
     })
 }
-const sendCancelationEmail = (email, name) => {
+const sendCancellationEmail = (email, name) => {
     sgMail.send({
         to: email,
         from: 'noreply@neutrongalaxy.epizy.com',
@@ -21,5 +21,5 @@ const sendCancelationEmail = (email, name) => {
 
 module.exports = {
     sendWelcomeEmail,
-    sendCancelationEmail
+    sendCancellationEmail
 }
