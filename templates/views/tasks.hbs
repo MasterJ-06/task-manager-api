@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tasks</title>
+    <link rel="icon" href="/img/book.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    {{>login}}
+    {{>signup}}
+    <div class="links">
+        <script src="/js/first.js"></script>
+        <script src="/js/logout.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+        <link rel="stylesheet" href="/css/fa.css">
+        <a href="/task">Library</a>
+        <a href="/profile">Profile</a>
+        <a href="/about">About</a>
+        <a href="/help">Help</a>
+        <button id="signup_button" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+        <button id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
+        <button id="logout_button" onclick="logout()">Log Out</button>
+    </div>
+    <div class="addcontainer">
+        <a onclick="addNote();" href="javascript:void(0)" class="addbtn"><svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512" width="64" height="64" class="add">
+                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM256 368C269.3 368 280 357.3 280 344V280H344C357.3 280 368 269.3 368 256C368 242.7 357.3 232 344 232H280V168C280 154.7 269.3 144 256 144C242.7 144 232 154.7 232 168V232H168C154.7 232 144 242.7 144 256C144 269.3 154.7 280 168 280H232V344C232 357.3 242.7 368 256 368z" />
+            </svg></a>
+    </div>
+    <div class="main-content">
+        <h1>{{title}}</h1>
+        <form class="search" id="search" onsubmit="console.log('submitted')">
+            <select name="sortBy" id="sortBy">
+                <option value="Date: asending">Date: asending</option>
+                <option value="Date: desending">Date: desending</option>
+                <option value="Completed: asending">Completed: asending</option>
+                <option value="Completed: desending">Completed: desending</option>
+            </select>
+            <button>Search</button>
+        </form>
+        <div class="masonry" id="masonry"></div>
+    </div>
+    {{>footer}}
+</body>
+<script type="text/javascript" src="/js/tasks.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"
+    integrity="sha512-K9tDZvc8nQXR1DMuT97sct9f40dilGp97vx7EXjswJA+/mKqJZ8vcZLifZDP+9t08osMLuiIjd4jZ0SM011Q+w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</html>
