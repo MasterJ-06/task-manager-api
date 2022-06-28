@@ -95,6 +95,7 @@ search.addEventListener('submit', (e) => {
                 }
                 window.scrollBy(0, 1)
                 tilt()
+                reveal()
             })
         }
     })
@@ -139,6 +140,9 @@ fetch(`/tasksforuser?sortBy=updatedAt:asc`, {
                 </div>
                 </div>`
             }
+            window.scrollBy(0, 1)
+            tilt()
+            reveal()
             var offsetHeight = document.querySelector("body").offsetHeight;
             var part = document.getElementById("particles-js")
             part.style.height = offsetHeight + "px";
