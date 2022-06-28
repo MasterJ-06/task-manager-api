@@ -499,17 +499,17 @@ input[type="color"] {
   background: none;
   border: 0;
   cursor: pointer;
-  height: 500px;
+  height: 50%;
   padding: 0;
-  width: 500px;
+  width: 50%;
 }
 
 #addinput {
   display: block;
   margin: 50px auto 0 auto;
   border: 0;
-  height: 500px;
-  width: 500px;
+  height: 50%;
+  width: 50%;
 }
 
 #coloursubmit {
