@@ -22,7 +22,6 @@ setInterval(() => {
     if (x.includes("logged_in=yes")) {
         fetch('/users/refresh', {
             method: 'POST',
-            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': '*/*',
