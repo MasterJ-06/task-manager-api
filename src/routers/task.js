@@ -4,7 +4,7 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.post('/tasks', auth,  async (req, res) => {
+router.post('/tasks', auth, async (req, res) => {
     const task = new Task({
         ...req.body,
         owner: req.user._id
@@ -65,7 +65,7 @@ router.post('/tasksforuser', auth, async (req, res) => {
         if (!user) {
             return res.status(404).send()
         }
-        
+
         const task = await Task.find({ owner: user._id })
 
         if (!task) {
@@ -83,6 +83,26 @@ router.post('/tasksforuser', auth, async (req, res) => {
         }).execPopulate()
 
         res.send(req.user.tasks)
+    } catch (e) {
+        res.status(404).send()
+    }
+})
+
+router.post('/gettaskid', auth, async (req, res) => {
+    try {
+        const user = await User.findByName(req.body.name)
+
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        const task = await Task.find({ owner: user._id, description: req.body.description, updatedAt: req.body.created})
+
+        if (!task) {
+            return res.status(404).send()
+        }
+
+        res.send(task[0]._id)
     } catch (e) {
         res.status(404).send()
     }
@@ -106,7 +126,7 @@ router.get('/tasks/:id', auth, async (req, res) => {
 
 router.patch('/tasks/:id', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['description', 'completed']
+    const allowedUpdates = ['description', 'completed', 'colour']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
@@ -119,7 +139,7 @@ router.patch('/tasks/:id', auth, async (req, res) => {
         if (!task) {
             return res.status(404).send()
         }
-        
+
         updates.forEach((update) => task[update] = req.body[update])
         await task.save()
 
